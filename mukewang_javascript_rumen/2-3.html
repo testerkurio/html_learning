@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<title>confirm</title>
+	<script type="text/javascript">
+		function rec()
+		{
+			var mymessage=confirm("妹纸么？");
+			if(mymessage==true)
+			{
+				document.write("带你玩");
+			}
+			else
+			{
+				document.write("一边去");
+			}
+		}
+	</script>
+</head>
+<body>
+	<input name="button" type="button" onclick="rec()" value="请选择你的性别">
+</body>
+</html>
