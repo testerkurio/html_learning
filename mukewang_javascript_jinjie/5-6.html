@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<title>函数</title>
+	<script type="text/javascript">
+		//定义函数
+		function whichbigger(x,y){
+			var bigger,x,y;
+			//函数体，判断两个整数比较的三种情况
+			if(x>y){
+				bigger=x;
+			}
+			else if(x<y){
+				bigger=y;
+			}
+			else if(x==y){
+				document.write("这两个数一样大");
+			}
+			return bigger;
+		}
+		//调用函数，实现下面两组数中，返回较大值
+		document.write("5和4的较大值是："+whichbigger(5,4)+"<br>");
+		document.write("6和3的较大值是："+whichbigger(6,3));
+	</script>
+</head>
+<body>
+
+</body>
+</html>
