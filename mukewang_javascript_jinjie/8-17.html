@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<title>浏览器对象编程练习</title>
+</head>
+<body>
+	<h3>操作成功</h3>
+	<p>
+		<b id="second">5</b>秒后回到主页
+		<a href="javascript:back();">返回</a>
+	</p>
+	<script type="text/javascript">
+		//获取显示秒数的元素，通过定时器来更改秒数
+		var num=5;
+		var sec=document.getElementById('second'); //获取当前秒数
+		function time(){
+			num--;
+			sec.innerHTML = num; //用num替换当前秒数
+			if(num==1){
+				window.location.href='http://www.imooc.com';
+			}
+		}
+		setInterval(time,1000);
+		//通过window的location和history对象来控制网页的跳转
+		function back(){
+			history.go(-1);
+		}
+	</script>
+
+</body>
+</html>
