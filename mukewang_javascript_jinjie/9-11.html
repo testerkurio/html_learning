@@ -18,10 +18,10 @@
 	<script type="text/javascript">
 		//获得指定节点的上一节点
 		//创建一个过滤掉非元素节点的函数
-		function get_nextSibling(n){
-			var x=n.nextSibling;
-			while(x.nodeType!=1){
-				x=x.nextSibling;
+		function get_previousSibling(n){
+			var x=n.previousSibling;
+			while(x && x.nodeType!=1){
+				x=x.previousSibling;
 			}
 			return x;
 		}
@@ -31,13 +31,13 @@
 		document.write(" = ");
 		document.write(x.innerHTML);
 
-		var y=get_nextSibling(x);
+		var y=get_previousSibling(x);
 
 		if(y!=null){
-			document.write("<br>nextSibling:");
-			document.write(y.nodeName);
+			document.write("<br>perviousSibling:");
+			document.write(y.nodeName); //获取Tag名称
 			document.write(" = ");
-			document.write(y.innerHTML);
+			document.write(y.innerHTML); //获取Tag内容
 		}
 		else{
 			document.write("<br>已经是最后一个节点");
