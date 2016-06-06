@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>编程练习</title>
+	<script type="text/javascript">
+		window.onload=function(){
+			HighLight();
+		}
+
+		//鼠标移动改变背景，可以通过给每行绑定鼠标移上事件和鼠标移除事件来改变所在行背景色
+		function HighLight(){
+			var tbody=document.getElementById("table").lastChild;
+			trs=tbody.getElementsByTagName("tr");
+			for(var i=1;i<trs.length;i++){ //从1记起是因为要省去表头，即姓名那行
+				trs[i].onmouseover=function(){
+					this.style.backgroundColor="#f2f2f2";
+				}
+				trs[i].onmouseout=function(){
+					this.style.backgroundColor="#fff";
+				}
+			}
+		}
+
+		//编写一个函数，供添加按钮调用，动态在表格的最后一行添加子节点；
+		function addcase(obj){
+			var tbody=document.getElementById("table").lastChild;
+			var tr=document.createElement("tr"); //新建tr标签
+
+			var td=document.createElement("td"); //新建td标签
+			td.innerHTML="<input type='text'>"; //手动输入给td标签赋值
+			tr.appendChild(td); //将td加入tr标签内
+
+			td=document.createElement("td"); //新建第二个tr标签
+			td.innerHTML="<input type='text'>";
+			tr.appendChild(td);
+
+			td=document.createElement("td"); //新建第三个tr标签
+			td.innerHTML="<a href='javascript:;' onclick='deletecase(this)'>删除</a>"; //创建一个带有删除功能的按钮
+			tr.appendChild(td);
+
+			tbody.appendChild(tr); //将增加了三条td的tr加入table中
+			HighLight();
+		}
+
+		//创建删除函数
+		function deletecase(obj){
+			var tbody=document.getElementById("table").lastChild;
+			//以上获取的就是<tbody></tbody>这个节点，在<table></table>创建时里面默认添加了<thead></thead>和<tbody></tbody>
+			var tr=obj.parentNode.parentNode; //obj为按钮节点，obj.parentNode为td，td.parentNode为tr
+			tbody.removeChild(tr); //删除指定行tr
+		}
+	</script>
+</head>
+<body>
+	<table border="1" width="50%" id="table">
+		<tr>
+			<th>学号</th>
+			<th>姓名</th>
+			<th>操作</th>
+		</tr>
+		<tr>
+			<td>xh001</td>
+			<td>王小明</td>
+			<td><a href="javascript:;" onclick="deletecase(this)">删除</a></td> <!--在删除按钮上添加点击事件 -->
+		</tr>
+		<tr>
+			<td>xh002</td>
+			<td>刘小芳</td>
+			<td><a href="javascript:;" onclick="deletecase(this)">删除</a></td> <!--在删除按钮上添加点击事件 -->
+		</tr>
+	</table>
+	<input type="button" value="添加一行" onclick="addcase()"> <!--在添加按钮上添加点击事件 -->
+</body>
+</html>
